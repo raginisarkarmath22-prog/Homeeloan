@@ -1,0 +1,87 @@
+@font-face {
+  font-family: Orbitron;
+  src: url(../src/assets/fonts/DigitalNormal-xO6j.otf);
+}
+@font-face {
+  font-family: analog;
+  src: url(../src/assets/fonts/Orbitron-VariableFont_wght.ttf);
+}
+@import "tailwindcss";
+
+:root {
+  --font-Orbitron: Orbitron, "mono";
+  
+}
+:root {
+ --font-analog: analog ;
+  
+}
+/* Custom animation */
+
+
+
+@layer utilities {
+  @keyframes scroll-right {
+    0% {
+      transform: translateX(-50%);
+    }
+    100% {
+      transform: translateX(0%);
+    }
+  }
+
+  .animate-scroll-right {
+    animation: scroll-right 55s linear infinite;
+  }
+
+  .hover-pause:hover {
+    animation-play-state: paused;
+  }
+ @keyframes disco {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+
+  .before\:animate-disco::before {
+    animation: disco 3s linear infinite;
+  }
+   @keyframes fadeSlideUp {
+  0% {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fadeSlideUp {
+  animation: fadeSlideUp 1s ease-out forwards;
+}
+
+.glow-border::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border-radius: inherit;
+  padding: 1px;
+  background: linear-gradient(45deg, #0a4925, #4ecdc4, #45b7d1, #090452);
+  mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  mask-composite: exclude;
+  -webkit-mask-composite: xor;
+  opacity: 0.7;
+  z-index: -1;
+}
+
+}
+
+
+

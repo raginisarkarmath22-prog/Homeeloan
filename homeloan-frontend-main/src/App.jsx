@@ -1,0 +1,59 @@
+import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
+import Home from './pages/user/Home';
+import Register from './pages/user/Register';
+import NotFound from './pages/user/notFound';   // or ./pages/user/NotFound if you renamed
+import Login from './pages/user/Login';
+import BankLoanPage from './pages/user/BankLoanPage';   // fixed here
+import Navbar from './components/Navbar';
+import EligibilityFormPage from './pages/user/EligibilityFormPage';
+import LoanPage from './pages/user/LoanPage';
+import ApprovedProjects from './pages/user/ApprovedProjects';
+
+// admin 
+import AdminDashboard from "./pages/admin/AdminDashboard";
+import AdminLayout from "./layouts/admin/AdminLayout";
+import Seo from './pages/admin/Seo';
+import Eligibility from './pages/admin/Eligibility';
+
+
+function AppContent() {
+  const location = useLocation();
+  const hideNavbar = location.pathname.startsWith('/admin') || location.pathname === '/login' || location.pathname === '/register';
+
+  return (
+    <>
+      {!hideNavbar && <Navbar />}
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/register" element={<Register />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="*" element={<NotFound />} />
+        <Route path="/calculator/:bank" element={<BankLoanPage />} />
+        <Route path="/eligibility-form" element={<EligibilityFormPage />} />
+
+      {/* <Route path="/loan/:bankSlug" element={<LoanPage />} /> */}
+      <Route path="/loan/:bankSlug/projects/:cityName" element={<ApprovedProjects />} />
+
+      <Route path="/admin" element={<AdminLayout />}>
+          <Route index element={<AdminDashboard />} />
+          <Route path="Seo" element={<Seo />} />
+          <Route path="Eligibility" element={<Eligibility />} />
+          {/* Add more nested routes here */}
+        </Route>
+
+         </Routes>
+    </>
+  );
+}
+
+function App() {
+  return (
+    <Router>
+      
+      <AppContent />
+    </Router>
+   
+  );
+}
+
+export default App;
