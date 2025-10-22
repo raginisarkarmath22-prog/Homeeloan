@@ -28,7 +28,7 @@ function Register() {
     setErrorMessage("");
 
     try {
-      const res = await fetch("http://31.97.226.15/api/register", {
+      const res = await fetch("https://31.97.226.15/api/register", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(formData),

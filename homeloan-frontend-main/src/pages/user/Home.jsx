@@ -38,7 +38,7 @@ function Home() {
   useEffect(() => {
     const fetchSeoData = async () => {
       try {
-        const res = await fetch("http://31.97.226.15/api/seo/home");
+        const res = await fetch("https://31.97.226.15/api/seo/home");
         const data = await res.json();
         setSeoData(data); // ✅ not data[0]
       } catch (error) {
