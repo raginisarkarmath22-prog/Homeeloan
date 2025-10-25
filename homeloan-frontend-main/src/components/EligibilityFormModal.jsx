@@ -118,7 +118,7 @@ const EligibilityFormModal = ({ showModal, setShowModal }) => {
 
     // Send data to backend asynchronously
     try {
-      await axios.post("https://homeeloan.com/api/eligibility-applications", payload);
+      await axios.post("http://homeeloan.com/api/eligibility-applications", payload);
       setShowPopup(true);
     } catch (error) {
       console.error("Failed to save eligibility data to DB", error);

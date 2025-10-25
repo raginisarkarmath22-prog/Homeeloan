@@ -5,11 +5,15 @@ import NotFound from './pages/user/notFound';   // or ./pages/user/NotFound if y
 import Login from './pages/user/Login';
 import BankLoanPage from './pages/user/BankLoanPage';   // fixed here
 import Navbar from './components/Navbar';
+import About from './components/About';
 import EligibilityFormPage from './pages/user/EligibilityFormPage';
 import LoanPage from './pages/user/LoanPage';
 import ApprovedProjects from './pages/user/ApprovedProjects';
+import HomeLoanEMICalculator from './components/HomeLoanEMICalculator';
+import Accordion from './components/faq';
+import CompareLoan from './pages/user/ComparedLoan';
 
-// admin 
+// admin
 import AdminDashboard from "./pages/admin/AdminDashboard";
 import AdminLayout from "./layouts/admin/AdminLayout";
 import Seo from './pages/admin/Seo';
@@ -30,6 +34,10 @@ function AppContent() {
         <Route path="*" element={<NotFound />} />
         <Route path="/calculator/:bank" element={<BankLoanPage />} />
         <Route path="/eligibility-form" element={<EligibilityFormPage />} />
+        <Route path="/emi-calculator" element={<HomeLoanEMICalculator />} />
+        <Route path="/faqs" element={<Accordion />} />
+  <Route path="/about" element={<About />} />
+        <Route path="/compare-loans" element={<CompareLoan />} />
 
       {/* <Route path="/loan/:bankSlug" element={<LoanPage />} /> */}
       <Route path="/loan/:bankSlug/projects/:cityName" element={<ApprovedProjects />} />

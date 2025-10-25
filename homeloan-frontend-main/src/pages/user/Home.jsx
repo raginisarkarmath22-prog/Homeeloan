@@ -34,11 +34,12 @@ import Footer from "../../components/Footer";
 
 function Home() {
   const [seoData, setSeoData] = useState(null);
+  const [openFeedbackCard, setOpenFeedbackCard] = useState(null);
 
   useEffect(() => {
     const fetchSeoData = async () => {
       try {
-        const res = await fetch("https://31.97.226.15/api/seo/home");
+        const res = await fetch("http://31.97.226.15/api/seo/home");
         const data = await res.json();
         setSeoData(data); // ✅ not data[0]
       } catch (error) {
@@ -127,8 +128,8 @@ function Home() {
         <LoanApproved />
         <Accordion />
         <WhyChooseUs />
-        <Feedback />
-        <Footer />
+        <Feedback openCardSignal={openFeedbackCard} onCardClose={() => setOpenFeedbackCard(null)} />
+        <Footer onOpenContact={() => setOpenFeedbackCard('contact')} />
       </main>
     </>
   );

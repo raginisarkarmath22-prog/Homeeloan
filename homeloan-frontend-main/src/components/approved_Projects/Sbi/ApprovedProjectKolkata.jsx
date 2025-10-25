@@ -1,10 +1,11 @@
 import React, { useState } from "react";
 import { MapPin, Home, Heart } from "lucide-react";
 import ApplicationFormPopup from "./ApplicationFormPopup";
-import Ads from "../../ads"
+import Ads from "../../ads";
 
 const ApprovedProjectKolkata = () => {
   const [selectedProject, setSelectedProject] = useState(null);
+  const [expandedCards, setExpandedCards] = useState({});
   const projects = [
     {
       id: 1,
@@ -219,13 +220,20 @@ const ApprovedProjectKolkata = () => {
     handleCloseForm();
   };
 
+  const toggleCardExpansion = (id) => {
+    setExpandedCards(prev => ({
+      ...prev,
+      [id]: !prev[id]
+    }));
+  };
+
   return (
-    <div className="min-h-screen font-sans pt-20">
-  <div className="rounded-2xl p-2 text-center lg:w-[60%] lg:ml-20 shadow-sm ">
+    <div className="min-h-screen bg-gradient-to-br from-blue-100 to-green-100 font-sans pt-20">
+  <div className="rounded-2xl p-2 text-center lg:w-[60%] lg:ml-20 shadow-sm">
 <h2 className="text-lg md:text-4xl font-serif font-extrabold text-gray-800 tracking-wide">
-        ✨Sbi Approved Projects✨
+        SBI Approved Projects
       </h2>
-      <p className="text-4xl font-serif font-extrabold mb-12  text-blue-800 underline tracking-wide">
+      <p className="text-4xl font-serif font-extrabold mb-12 text-blue-800 underline tracking-wide">
         Kolkata
       </p>
   </div>
@@ -239,40 +247,38 @@ const ApprovedProjectKolkata = () => {
             {projectList.map((project) => (
               <div
                 key={project.id}
-                className=" w-full h-full bg-white rounded-3xl shadow-xl overflow-hidden transform hover:-translate-y-2 transition-transform duration-500 relative"
+                className="w-full h-full bg-white rounded-lg shadow-lg overflow-hidden transform hover:scale-105 transition-transform duration-300 relative cursor-pointer"
+                onClick={() => toggleCardExpansion(project.id)}
               >
-                {/* Image with overlay */}
-                <div className="relative h-47 md:h-60 w-full">
+                {/* Image */}
+                <div className="relative h-56 w-full">
                   <img
                     src={project.image}
                     alt={project.name}
-                    className="object-cover transform group-hover:scale-110 transition-transform duration-700 ease-in-out"
+                    className="w-full h-full object-cover"
                   />
-                  {/* Overlay for aesthetic effect */}
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/40 to-transparent"></div>
                 </div>
 
                 {/* Badge & Heart Button */}
-                <div className="absolute top-4 left-4 bg-white/20 backdrop-blur-md px-3 py-1 rounded-full border border-white/30 text-sm font-semibold text-white shadow-md">
+                <div className="absolute top-4 left-4 bg-blue-600 text-white px-3 py-1 rounded-full text-sm font-semibold shadow-md">
                   {project.Approved} ✔
                 </div>
 
 
                 {/* Content Card */}
-                <div className="p-3 pb-4 bg-white rounded-b-3xl backdrop-blur-md bg-opacity-70 border-t border-gray-200">
+                <div className="p-6 bg-white">
                   {/* Header */}
                   <div className="flex items-center justify-between mb-1">
                     <h3 className="md:text-2xl text-xl font-bold text-gray-900 ">{project.name}</h3>
 
                     <button
-                      onClick={() => handleLike(project.id)}
-                      className={`absolute top-4 right-4 p-2 rounded-full backdrop-blur-md transition-all duration-300 ${project.liked ? "bg-red-500 text-white scale-110" : "bg-white/30 text-white"
+                      onClick={(e) => { e.stopPropagation(); handleLike(project.id); }}
+                      className={`absolute top-4 right-4 p-2 rounded-full transition-all duration-300 hover:scale-110 ${project.liked ? "bg-red-500 text-white" : "bg-gray-200 text-gray-600 hover:bg-gray-300"
                         }`}
                     >
                       <Heart
                         size={20}
-                        className={`transition-transform ${project.liked ? "fill-white animate-pulse" : ""
-                          }`}
+                        className={`${project.liked ? "fill-white" : ""}`}
                       />
                     </button>
                   </div>
@@ -293,54 +299,42 @@ const ApprovedProjectKolkata = () => {
                     </div>
                   </div>
 
-                  {/* Description */}
-
                   {/* Price & Apply Button */}
                   <div className="flex flex-col md:flex-row md:justify-between items-center md:items-center mb-4">
-                    <div className="text-xl font-extrabold text-green-600 mb-2 md:mb-0">
+                    <div className="text-xl font-extrabold text-blue-600 mb-2 md:mb-0">
                       {project.price}
                     </div>
                     <button
-                      onClick={() => handleApplyNow(project)}
-                      className="bg-[#1800ad] text-white font-semibold rounded-full px-6 py-2 shadow-lg hover:shadow-2xl transition duration-300 text-sm"
+                      onClick={(e) => { e.stopPropagation(); handleApplyNow(project); }}
+                      className="bg-green-700 text-white font-semibold rounded-lg px-6 py-2 shadow-lg hover:bg-green-900 hover:shadow-xl transition duration-300 text-sm"
                     >
                       Apply Now
                     </button>
                   </div>
-                  {/* bg-gradient-to-r from-blue-500 via-indigo-600 to-purple-600 hover:from-purple-600 hover:to-blue-600 */}
-                  {/* Additional Details */}
-                  <div className="mt-2 border-t border-gray-300 pt-4 grid grid-cols-1 md:grid-cols-2 gap-2 text-sm text-gray-700">
-                    <div>
-                      <strong>Possession Date:</strong> {project.possessionDate}
-                    </div>
-                    <div>
-                      <strong>Configuration:</strong> {project.configuration}
-                    </div>
-                    <div>
-                      <strong>Carpet Area:</strong> {project.carpetArea}
-                    </div>
-                    <div className="flex justify-between pr-25 block lg:hidden">
 
+                  {/* Additional Details - Expandable */}
+                  {expandedCards[project.id] && (
+                    <div className="mt-4 border-t border-gray-300 pt-4 grid grid-cols-1 md:grid-cols-2 gap-2 text-sm text-gray-700 animate-fade-in">
+                      <div>
+                        <strong>Possession Date:</strong> {project.possessionDate}
+                      </div>
+                      <div>
+                        <strong>Configuration:</strong> {project.configuration}
+                      </div>
+                      <div>
+                        <strong>Carpet Area:</strong> {project.carpetArea}
+                      </div>
                       <div>
                         <strong>Towers:</strong> {project.towers}
                       </div>
                       <div>
                         <strong>Floors:</strong> {project.floors}
                       </div>
-
-                    </div>
-                    <div className="hidden lg:block">
                       <div>
-                        <strong>Towers:</strong> {project.towers}
-                      </div>
-                      <div>
-                        <strong>Floors:</strong> {project.floors}
+                        <strong>Apartments per Floor:</strong> {project.apartmentsPerFloor}
                       </div>
                     </div>
-                    <div>
-                      <strong>Apartments per Floor:</strong> {project.apartmentsPerFloor}
-                    </div>
-                  </div>
+                  )}
                 </div>
               </div>
             ))}

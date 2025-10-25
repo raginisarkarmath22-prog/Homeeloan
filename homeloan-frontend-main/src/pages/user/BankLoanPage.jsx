@@ -11,8 +11,9 @@ import doIQualify from "../../assets/doIQualify.webp";
 import Accordion from "../../components/BankpageAccordian";
 import { useNavigate } from "react-router-dom";
 import Ads from "../../components/ads";
-import CompareLoan1 from "./ComparedLoanForBank";
+import ComparedLoan from "./ComparedLoan";
 import LoanPage from "./LoanPage";
+import Footer from "../../components/Footer";
 
 const bankRates = {
   sbi: 7.5,
@@ -154,7 +155,7 @@ export default function BankLoanPage() {
             )}
           </div>
           <div>
-            <CompareLoan1 currentBank={bank} />
+            <ComparedLoan />
           </div>
 
           {/* approved projects section ----------------------------------------------------------------------------------------------------------- */}
@@ -173,184 +174,7 @@ export default function BankLoanPage() {
         </div>
 
       </div>
-      <footer className="bg-gray-800 text-gray-300 py-6 text-[8px] md:text-sm">
-        <div className="max-w-7xl mx-auto  px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-10 mb-10">
-            <div>
-              <div className="flex items-center mb-4 text-white">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  viewBox="0 0 24 24"
-                  fill="currentColor"
-                  className="size-6"
-                >
-                  <path d="M19.006 3.705a.75.75 0 1 0-.512-1.41L6 6.838V3a.75.75 0 0 0-.75-.75h-1.5A.75.75 0 0 0 3 3v4.93l-1.006.365a.75.75 0 0 0 .512 1.41l16.5-6Z" />
-                  <path
-                    fillRule="evenodd"
-                    d="M3.019 11.114 18 5.667v3.421l4.006 1.457a.75.75 0 1 1-.512 1.41l-.494-.18v8.475h.75a.75.75 0 0 1 0 1.5H2.25a.75.75 0 0 1 0-1.5H3v-9.129l.019-.007ZM18 20.25v-9.566l1.5.546v9.02H18Zm-9-6a.75.75 0 0 0-.75.75v4.5c0 .414.336.75.75.75h3a.75.75 0 0 0 .75-.75V15a.75.75 0 0 0-.75-.75H9Z"
-                    clipRule="evenodd"
-                  />
-                </svg>
-                <span className="ml-2 text-xl font-bold">
-                  https://homeeloan.com
-                </span>
-              </div>
-              <p className="text-gray-100 mb-4">
-                Making homeownership dreams come true with competitive rates and
-                exceptional service.
-              </p>
-              <div className="flex space-x-4 mt-4">
-                <a
-                  href="https://facebook.com"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="bg-gray-700 hover:bg-blue-600 text-white p-2 rounded-full transition-colors"
-                >
-                  <FaFacebookF className="w-4 h-4" />
-                </a>
-                <a
-                  href="https://twitter.com"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="bg-gray-700 hover:bg-blue-400 text-white p-2 rounded-full transition-colors"
-                >
-                  <FaTwitter className="w-4 h-4" />
-                </a>
-                <a
-                  href="https://linkedin.com"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="bg-gray-700 hover:bg-blue-700 text-white p-2 rounded-md transition-colors"
-                >
-                  <FaLinkedinIn className="w-4 h-4" />
-                </a>
-              </div>
-            </div>
-            {/* 
-
-            {/* Loan Products  */}
-            <div className="font-serif">
-              <h3 className="text-white font-semibold text-xl mb-3">
-                Loan Products
-              </h3>
-              <ul className="space-y-2">
-                <li>
-                  <a href="" className="hover:underline hover:text-white">
-                    Home Loan
-                  </a>
-                </li>
-                <li>
-                  <a href="" className="hover:underline hover:text-white">
-                    Loan Against Property
-                  </a>
-                </li>
-                <li>
-                  <a href="" className="hover:underline hover:text-white">
-                    Re-Finance
-                  </a>
-                </li>
-                <li>
-                  <a href="" className="hover:underline hover:text-white">
-                    Commercial Loan
-                  </a>
-                </li>
-              </ul>
-            </div>
-
-            <div className="font-serif">
-              <h3 className="text-white font-semibold text-xl mb-3">
-                Resources
-              </h3>
-              <ul className="space-y-2">
-                <li>
-                  <a href="" className="hover:underline hover:text-white">
-                    Home Loan
-                  </a>
-                </li>
-                <li>
-                  <a href="" className="hover:underline hover:text-white">
-                    Loan Against Property
-                  </a>
-                </li>
-                <li>
-                  <a href="" className="hover:underline hover:text-white">
-                    Re-Finance
-                  </a>
-                </li>
-                <li>
-                  <a href="" className="hover:underline hover:text-white">
-                    Commercial Loan
-                  </a>
-                </li>
-              </ul>
-            </div>
-            <div className="font-serif">
-              <h3 className="text-white font-semibold text-xl mb-3">Company</h3>
-              <ul className="space-y-2">
-                <li>
-                  <a href="" className="hover:underline hover:text-white">
-                    About Us
-                  </a>
-                </li>
-                <li>
-                  <a href="" className="hover:underline hover:text-white">
-                    Our Team{" "}
-                  </a>
-                </li>
-                <li>
-                  <a href="" className="hover:underline hover:text-white">
-                    Contacts
-                  </a>
-                </li>
-                <li>
-                  <a href="" className="hover:underline hover:text-white">
-                    Review{" "}
-                  </a>
-                </li>
-              </ul>
-            </div>
-          </div>
-          <div className="border-t border-gray-100 mt-8 pt-8">
-            <div className="flex flex-col md:flex-row justify-between items-center">
-              <p className="text-gray-400 text-sm">
-                © {new Date().getFullYear()}{" "}
-                <a href="https://homeeloan.com/" className="text-blue-600">
-                  https://homeeloan.com/
-                </a>{" "}
-                All rights reserved. Empowering your homeownership journey with
-                trust and transparency.
-              </p>
-
-              <div className="flex space-x-6 mt-4 md:mt-0">
-                <a
-                  href="#about"
-                  className="text-gray-400 hover:text-white text-sm"
-                >
-                  About Us
-                </a>
-                <a
-                  href="#about"
-                  className="text-gray-400 hover:text-white text-sm"
-                >
-                  Our Team
-                </a>
-                <a
-                  href="#contact"
-                  className="text-gray-400 hover:text-white text-sm"
-                >
-                  Contact
-                </a>
-                <a
-                  href="#support"
-                  className="text-gray-400 hover:text-white text-sm"
-                >
-                  Support Center
-                </a>
-              </div>
-            </div>
-          </div>
-        </div>
-      </footer>
+      <Footer />
     </main>
   );
 }

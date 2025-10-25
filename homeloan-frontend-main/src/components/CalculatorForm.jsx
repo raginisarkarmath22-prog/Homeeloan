@@ -3,7 +3,7 @@ import React from 'react';
 export default function CalculatorForm({ formData, setFormData }) {
   return (
     <div className="space-y-4 max-w-md">
-      <span className="text-xl text-zinc-300">Loan Amount (₹)</span>
+      <span className="text-xl text-zinc-300 font-serif">Loan Amount (₹)</span>
       <input
         type="number"
         placeholder="Loan Amount (₹)"
@@ -14,7 +14,7 @@ export default function CalculatorForm({ formData, setFormData }) {
         className="border-b shadow p-2 w-full"
       />
 
-      <span className="text-xl text-zinc-300">Interest Rate (%)</span>
+      <span className="text-xl text-zinc-300 font-serif">Interest Rate (%)</span>
       <input
         type="number"
         step="0.1"
@@ -26,7 +26,7 @@ export default function CalculatorForm({ formData, setFormData }) {
         className="border-b shadow p-2 w-full"
       />
 
-      <span className="text-xl text-zinc-300">Loan Tenure (Years)</span>
+      <span className="text-xl text-zinc-300 font-serif">Loan Tenure (Years)</span>
       <input
         type="number"
         placeholder="Loan Tenure (Years)"

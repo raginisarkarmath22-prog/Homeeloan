@@ -41,7 +41,7 @@ const ApplicationFormPopup = ({ project, onClose, onSubmit, defaultCity = "" }) 
     //   projectLoanId: project.loan_id,
     // });
       try {
-      const response = await fetch("https://31.97.226.15:8080/api/application/apply", {
+      const response = await fetch("http://31.97.226.15:8080/api/application/apply", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

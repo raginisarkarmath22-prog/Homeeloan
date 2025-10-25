@@ -1,9 +1,10 @@
-# TODO: Update HTTP to HTTPS in API Calls and Proxy Configurations
-
-## Steps to Complete:
-- [x] Update vite.config.js: Change proxy target from 'http://31.97.226.15:8080' to 'https://31.97.226.15:8080'
-- [x] Update Register.jsx: Change API call from "http://31.97.226.15/api/register" to "https://31.97.226.15/api/register"
-- [x] Update Home.jsx: Change API call from "http://31.97.226.15/api/seo/home" to "https://31.97.226.15/api/seo/home"
-- [x] Update ApplicationFormPopup.jsx: Change API call from "http://31.97.226.15:8080/api/application/apply" to "https://31.97.226.15:8080/api/application/apply"
-- [x] Update EligibilityFormModal.jsx: Change API call from "http://homeeloan.com/api/eligibility-applications" to "https://homeeloan.com/api/eligibility-applications"
-- [ ] Test the application to verify API calls work with HTTPS
+- [x] Update overall page background to gradient from blue-100 to green-100
+- [x] Update header styling to match professional look (remove emojis, adjust fonts and colors)
+- [x] Change card styles to rounded-lg, shadow-lg, hover:scale-105, remove custom overlays
+- [x] Adjust badge styling for consistency
+- [x] Update "Apply Now" button to green-700 with hover to green-900, add transitions
+- [x] Add transitions to heart button and other interactive elements
+- [x] Adjust text colors and fonts to match sleek professional theme
+- [x] Ensure responsive design is maintained
+- [x] Test the styling changes (ran npm run dev)
+- [x] Make cards foldable: show limited info initially, expand on click to show all details

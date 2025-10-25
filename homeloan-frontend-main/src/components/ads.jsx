@@ -22,6 +22,8 @@ const ads = {
   },
 };
 
+export const adsCount = Object.keys(ads).length;
+
 const Ads = ({ adId = 1 }) => {
   const [rotationIndex, setRotationIndex] = useState(0);
 
@@ -36,14 +38,14 @@ const Ads = ({ adId = 1 }) => {
   const adsToShow = [...adsArray.slice(rotationIndex), ...adsArray.slice(0, rotationIndex)];
 
   return (
-    <div className="flex flex-col gap-20">
+    <div className="flex flex-col gap-6 items-center">
       {adsToShow.map((ad, index) => (
         <div key={index} className="inline-block">
           {/* Label placed outside the card so it doesn't overlap */}
           <div className="text-[10px] text-gray-900 font-medium mb-1">
             Sponsored Ad
           </div>
-          <div className="w-full max-w-xs border border-gray-300 rounded-xl shadow-lg hover:shadow-2xl hover:scale-105 transition-all duration-300 overflow-hidden">
+          <div className="w-[200px] sm:w-[220px] border border-gray-300 rounded-xl shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300 overflow-hidden">
             <a
               href={ad.link}
               target="_blank"

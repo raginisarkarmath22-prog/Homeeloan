@@ -157,18 +157,18 @@ const emailAnimation = {
   ]
 };
 
-const Feedback = () => {
+const Feedback = ({ openCardSignal, onCardClose }) => {
   return (
     <>
       {/* Main Section */}
       <section className="relative py-8 px-6 md:px-12 overflow-hidden bg-gradient-to-r from-green-200 via-green-100 to-green-200">
-        <FeedbackContent />
+        <FeedbackContent openCardSignal={openCardSignal} onCardClose={onCardClose} />
       </section>
     </>
   );
 };
 
-const FeedbackContent = () => {
+const FeedbackContent = ({ openCardSignal, onCardClose }) => {
   const [expandedCard, setExpandedCard] = useState(null);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
@@ -193,6 +193,20 @@ const FeedbackContent = () => {
   const handleCardClick = (cardType) => {
     setExpandedCard(expandedCard === cardType ? null : cardType);
   };
+
+  // If parent signals to open a specific card, sync it to local state
+  useEffect(() => {
+    if (openCardSignal) {
+      setExpandedCard(openCardSignal);
+    }
+  }, [openCardSignal]);
+
+  // Notify parent when the modal is closed
+  useEffect(() => {
+    if (expandedCard === null && typeof onCardClose === 'function') {
+      onCardClose();
+    }
+  }, [expandedCard, onCardClose]);
 
   const handleInputChange = (key, value) => {
     setFormData(prev => ({ ...prev, [key]: value }));

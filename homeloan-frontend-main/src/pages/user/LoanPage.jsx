@@ -21,7 +21,7 @@ const LoanPage = ({ bankSlug }) => {
       </h1>
 
       {/* Blue half background */}
-      <div className="absolute bottom-0 left-0 w-full sm:h-[40%] h-[20%] bg-blue-950 rounded-b-[50px] rounded-r-[50px]"></div>      
+      <div className="absolute bottom-0 left-0 w-full sm:h-[40%] h-[20%] bg-blue-950 rounded-b-[50px] rounded-r-[50px]"></div>
       <div className="flex flex-wrap justify-center sm:gap-8  mt-8">
         {cities.map((city, i) => (
           <div

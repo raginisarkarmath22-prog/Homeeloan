@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import { FaFacebookF, FaTwitter, FaLinkedinIn } from "react-icons/fa";
 
-function Footer() {
+function Footer({ onOpenContact }) {
   const [showComingSoon, setShowComingSoon] = useState(false);
 
   const itemVariants = {
@@ -75,20 +75,20 @@ function Footer() {
             {
               title: "Resources",
               links: [
-                { text: "EMI Calculator", comingSoon: true },
+                { text: "EMI Calculator", href: "/emi-calculator" },
                 { text: "Eligibility Criteria", href: "/eligibility-form" },
                 { text: "Blog", comingSoon: true },
-                { text: "FAQs", comingSoon: true },
+                { text: "FAQs", href: "/faqs" },
               ],
             },
             {
               title: "Company",
               links: [
-                { text: "About Us", comingSoon: true },
-                { text: "Our Team", comingSoon: true },
-                { text: "Contacts", comingSoon: true },
-                { text: "Reviews", comingSoon: true },
-              ],
+                  { text: "About Us", href: "/about" },
+                  { text: "Our Team", comingSoon: true },
+                  { text: "Contacts", comingSoon: true },
+                  { text: "Reviews", comingSoon: true },
+                ],
             },
           ].map((section, i) => (
             <motion.div key={i} variants={itemVariants} className="font-sans">
@@ -107,8 +107,15 @@ function Footer() {
                         {link.text}
                       </Link>
                     ) : (
+                      // If this is the Contacts item and a handler was passed from parent, call it
                       <button
-                        onClick={() => setShowComingSoon(true)}
+                        onClick={() => {
+                          if (link.text === 'Contacts' && typeof onOpenContact === 'function') {
+                            onOpenContact();
+                          } else {
+                            setShowComingSoon(true);
+                          }
+                        }}
                         className="text-gray-100 hover:text-transparent bg-clip-text bg-gradient-to-r from-green-400 to-blue-400 transition-all duration-300 hover:font-medium"
                       >
                         {link.text}

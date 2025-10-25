@@ -161,7 +161,7 @@ const CompareLoan = () => {
   return (
     <section className="bg-gradient-to-b from-blue-50 via-green-100 to-green-200 py-12 min-h-screen">
       <div className="container mx-auto px-6 sm:px-10">
-        <h2 className="text-3xl md:text-5xl font-bold mb-10 text-center bg-gradient-to-b from-blue-700 to-blue-900 bg-clip-text text-transparent drop-shadow-sm">
+        <h2 className="text-3xl pt-10 md:text-5xl font-bold mb-10 text-center bg-gradient-to-b from-blue-700 to-blue-900 bg-clip-text text-transparent drop-shadow-sm">
           Compare Home Loan Offers
         </h2>
 

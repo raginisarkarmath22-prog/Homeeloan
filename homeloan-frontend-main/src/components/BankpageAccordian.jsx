@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { ChevronDownCircle } from "lucide-react"; // just one icon
-import robo from "../assets/robo.png";
+import { motion } from "framer-motion";
+import robo from "../assets/robo1.png";
 
 const Accordion = () => {
   const [openIndex, setOpenIndex] = useState(null);
@@ -58,27 +59,39 @@ const Accordion = () => {
   ];
 
   return (
-    <div className="max-w-6xl mx-auto px-4 py-8 shadow-sm">
-      <div className="flex items-center justify-center bg-white p-6 shadow-sm gap-4 mb-2 relative">
-        <h2 className="text-lg sm:text-3xl mr-12 font-bold text-gray-800">
-          Frequently Asked Questions
-        </h2>
+    <section className="relative max-w-7xl mx-auto px-6 py-16 bg-gradient-to-br from-green-950 via-green-800 to-green-950 overflow-hidden border-2 border-green-700/60 rounded-lg">
+      {/* subtle background glows */}
+      <div className="absolute top-10 left-10 w-64 h-64 bg-teal-400/20 rounded-full blur-3xl animate-pulse" />
+      <div className="absolute bottom-10 right-10 w-64 h-64 bg-cyan-400/20 rounded-full blur-3xl animate-pulse" />
+
+      {/* heading */}
+      <motion.div
+        className="flex items-center justify-center relative mb-20 z-10"
+        initial={{ y: -20, opacity: 0 }}
+        animate={{ y: 0, opacity: 1 }}
+        transition={{ duration: 0.8 }}
+      >
+        <div className="flex items-center justify-center gap-3 backdrop-blur-md bg-white/100 border border-white/20 px-8 py-2 rounded-full shadow-2xl">
+          <h2 className="text-2xl md:text-3xl font-bold bg-gradient-to-r from-green-800 to-green-700 bg-clip-text text-transparent text-center">
+            Frequently Asked Questions
+          </h2>
+        </div>
         <img
           src={robo}
-          alt="Robot"
-          className="absolute md:w-56 w-45 h-auto md:ml-110 ml-57"
+          alt="Friendly robot"
+          className="block w-20 md:w-38 h-auto object-contain self-center opacity-90 drop-shadow-[0_10px_15px_rgba(255,255,255,4)] absolute left-4 md:left-30 transform -translate-x-1/2"
         />
-      </div>
+      </motion.div>
 
       <div className="space-y-4">
         {faqs.map((faq, index) => (
           <div
             key={index}
-            className="border-gray-200 bg-white rounded-xl shadow-sm transition-all duration-500 hover:shadow-md"
+            className="backdrop-blur-md bg-white/10 border border-white/20 shadow-lg shadow-cyan-500/20 hover:shadow-cyan-400/40 transition-shadow duration-300 rounded-xl"
           >
             <button
               onClick={() => toggle(index)}
-              className="flex justify-between items-center w-full px-5 py-3 text-left font-medium text-gray-800 text-base sm:text-lg hover:bg-[#f7f7f7b0] bg-[#f5f5f5] focus:outline-none"
+              className="flex justify-between items-center w-full px-5 py-3 text-left font-medium text-white text-base sm:text-lg hover:bg-white/20 bg-white/10 focus:outline-none rounded-xl"
             >
               {faq.question}
               <div className="pl-2">
@@ -90,7 +103,7 @@ const Accordion = () => {
               </div>
             </button>
             {openIndex === index && (
-              <div className="px-7 py-2 pb-5 text-sm sm:text-base text-gray-600 space-y-2">
+              <div className="px-7 py-2 pb-5 text-sm sm:text-base text-white/90 space-y-2">
                 {Array.isArray(faq.answer) ? (
                   <ul className="list-disc pl-5 space-y-1">
                     {faq.answer.map((line, i) => (
@@ -105,7 +118,7 @@ const Accordion = () => {
           </div>
         ))}
       </div>
-    </div>
+    </section>
   );
 };
 

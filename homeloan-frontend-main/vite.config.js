@@ -9,9 +9,9 @@ export default defineConfig({
 server: {
   proxy: {
     '/api': {
-      target: 'https://31.97.226.15:8080',
+      target: 'http://31.97.226.15:8080',
       changeOrigin: true,
-      secure: true,
+      secure: false,
     },
   },
 },
