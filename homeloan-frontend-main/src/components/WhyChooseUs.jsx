@@ -108,7 +108,7 @@ const WhyChooseUs = () => {
   };
 
   return (
-    <section className="py-12 bg-green-200/80 font-inter">
+    <section className="py-12 bg-from-green-200 to blue-200 font-inter">
       <div className="text-center mb-10">
         <h2 className="text-3xl font-bold font-serif text-black">Why Choose Us?</h2>
         <p className="text-xl mt-3 text-gray-800">

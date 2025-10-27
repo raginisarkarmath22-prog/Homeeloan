@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import { FaFacebookF, FaTwitter, FaLinkedinIn } from "react-icons/fa";
 
-function Footer({ onOpenContact }) {
+const Footer = React.forwardRef(function Footer({ onOpenContact }, ref) {
   const [showComingSoon, setShowComingSoon] = useState(false);
 
   const itemVariants = {
@@ -13,6 +13,7 @@ function Footer({ onOpenContact }) {
 
   return (
     <motion.footer
+      ref={ref}
       initial="hidden"
       whileInView="visible"
       viewport={{ once: true, amount: 0.3 }}
@@ -172,6 +173,6 @@ function Footer({ onOpenContact }) {
       </div>
     </motion.footer>
   );
-}
+});
 
 export default Footer;

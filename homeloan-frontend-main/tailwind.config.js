@@ -26,3 +26,13 @@ module.exports = {
   plugins: [],
 };
 
+// tailwind.config.js
+module.exports = {
+  theme: {
+    extend: {
+      fontFamily: {
+        sans: ["Manrope", "Inter", "Segoe UI", "Arial", "sans-serif"],
+      },
+    },
+  },
+};

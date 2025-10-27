@@ -238,9 +238,9 @@ const ApprovedProjectKolkata = () => {
       </p>
   </div>
       
-      <div className="flex flex-row justify-between">
-        
-        <div className="p-6  lg:w-[70%]">
+      <div className="flex flex-row w-full w-full">
+
+        <div className="p-6 w-full flex-1">
           
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 w-full max-w-4xl h-auto mx-auto">
@@ -341,7 +341,7 @@ const ApprovedProjectKolkata = () => {
           </div>
         </div>
         {/* ads section  */}
-        <div className="w-[30%] p-5 hidden lg:block">
+        <div className="p-5 hidden lg:block">
           <Ads />
         </div>
       </div>

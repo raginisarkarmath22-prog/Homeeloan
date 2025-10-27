@@ -37,7 +37,7 @@ export default function StepperSection() {
         <div className="flex flex-col md:flex-row backdrop-blur-lg bg-gradient-to-r from-green-700 to-green-800 border border-white/30 shadow-2xl rounded-2xl w-full max-w-7xl p-8 text-black overflow-hidden">
 
           {/* Stepper */}
-          <div className="relative w-full md:w-1/3 flex flex-row md:flex-col items-center md:items-start justify-between md:justify-start md:pr-8">
+          <div className="relative w-full md:w-1/3 flex flex-row md:flex-col items-center md:items-start justify-between md:justify-start md:pr-8 w-full">
 
             {/* Horizontal line for mobile */}
             <div className="absolute left-8 right-9 top-1/10 transform -translate-y-1/2 h-[2px] bg-[#14d159b5] border-t-2 border-dotted md:hidden"></div>

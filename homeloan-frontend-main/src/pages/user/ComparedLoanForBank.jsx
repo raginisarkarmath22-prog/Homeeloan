@@ -3,6 +3,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { Building } from "lucide-react";
+import { useNavigate } from "react-router-dom";
 
 const logoMap = {
   "state bank of india": "sbi.png",
@@ -30,6 +31,7 @@ const bankSlugMap = {
 };
 
 const CompareLoan1 = ({ currentBank }) => {
+  const navigate = useNavigate();
   const [banks, setBanks] = useState([]);
   const [selectedBanks, setSelectedBanks] = useState([]);
 
@@ -220,7 +222,7 @@ const CompareLoan1 = ({ currentBank }) => {
                   <span className="absolute inset-0 bg-white/20 backdrop-blur-md rounded-xl"></span>
                   <span className="relative z-10">Apply Now</span>
                 </button>
-                <button className="flex-1 bg-gradient-to-r from-blue-600 to-indigo-600 text-white font-semibold px-5 py-2 rounded-xl shadow-lg hover:scale-105 transition-transform duration-300">
+                <button onClick={() => navigate("/eligibility-form")} className="flex-1 bg-gradient-to-r from-blue-600 to-indigo-600 text-white font-semibold px-5 py-2 rounded-xl shadow-lg hover:scale-105 transition-transform duration-300">
                   Do I Qualify?
                 </button>
               </div>

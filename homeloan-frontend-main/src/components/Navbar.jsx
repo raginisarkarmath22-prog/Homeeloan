@@ -70,7 +70,7 @@ function Navbar() {
   }, [lastScrollY]);
 
   return (
-    <nav className={`fixed w-full shadow-2xl bg-green-200/60 text-black py-4 z-50 transition-transform duration-300 ${isVisible ? 'translate-y-0' : '-translate-y-full'}`}>
+    <nav className={`fixed w-full shadow-2xl bg-green-200/90 text-black py-4 z-50 transition-transform duration-300 ${isVisible ? 'translate-y-0' : '-translate-y-full'}`}>
       <div className="max-w-7xl mx-auto flex justify-between items-center px-6 md:px-8 py-2">
         {/* Logo */}
         <Link to="/" className="flex items-center space-x-2 justify-start col-span-1">
@@ -136,7 +136,7 @@ function Navbar() {
                   </Link>
                 </li>
                 <li>
-                  <Link to="/check-eligibility" className="block text-gray-800 hover:text-blue-900 hover:bg-blue-50 p-2 rounded">
+                  <Link to="/eligibility-form" className="block text-gray-800 hover:text-blue-900 hover:bg-blue-50 p-2 rounded">
                     Check Eligibility
                   </Link>
                 </li>
@@ -241,7 +241,11 @@ function Navbar() {
                 {expanded.iwantto && (
                   <ul className="pl-4 mt-1">
                     <li className="py-1">Apply Now</li>
-                    <li className="py-1">Check Eligibility</li>
+                    <li className="py-1">
+                      <Link to="/eligibility-form" onClick={() => setMobileMenuOpen(false)} className="block text-blue-700 hover:underline">
+                        Check Eligibility
+                      </Link>
+                    </li>
                   </ul>
                 )}
               </li>

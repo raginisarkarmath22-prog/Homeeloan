@@ -4,12 +4,11 @@ import { AiOutlineCheckCircle } from "react-icons/ai";
 import keyFeaturesBg from "../assets/keyfeatures.png";
 // import blackBg from "../assets/black___bg.png";
 import blackBg from "../assets/sayNoToFees.jpg";
-import piggy from "../assets/1.mp4";
-import useAnimatedCounter from "../hooks/beRewardedAnimateCounter"; // adjust path as needed
 import { useNavigate } from "react-router-dom";
+import KeyFeaturesCard from "./KeyFeaturesStory";
+import BeRewarded from "./BeRewarded";
 
 import percentageVideo from "../assets/percentage_video.mp4";
-
 const loanData = {
 
   "Home Loan": {
@@ -32,11 +31,11 @@ const loanData = {
     subtitle:
       "Achieve your dream of homeownership with affordable interest rates, flexible repayment terms, and quick approvals.",
     features: [
-      "Low interest rates starting from 8.5%",
-      "Up to 90% of property value as loan",
-      "Flexible repayment tenure up to 30 years",
-      "Minimal documentation and fast processing",
-      "Tax benefits on principal & interest repayment",
+      { title: "Low interest rates starting from 8.5%", detail: "Save more over the long term with competitive rates." },
+      { title: "Up to 90% of property value as loan", detail: "Leverage your property’s worth for maximum funding." },
+      { title: "Flexible repayment tenure up to 30 years", detail: "Tailor EMIs to match your financial goals." },
+      { title: "Minimal documentation and fast processing", detail: "Simple, transparent, and quick loan approval." },
+      { title: "Tax benefits on principal & interest repayment", detail: "Enjoy tax benefits and better financial control." },
     ],
 
     sayNoToFees: [
@@ -58,10 +57,10 @@ const loanData = {
     title: "Loan Against Property",
     subtitle: "Unlock the value of your property for business or personal use.",
     features: [
-      "Loan up to 70% of property value",
-      "Flexible usage: Business, Education, Marriage",
-      "Long tenure with low EMI's",
-      "Quick disbursal",
+      { title: "Loan up to 70% of property value", detail: "Maximize your borrowing potential against your property." },
+      { title: "Flexible usage: Business, Education, Marriage", detail: "Use funds for various personal or business needs." },
+      { title: "Long tenure with low EMI's", detail: "Extended repayment periods for manageable monthly payments." },
+      { title: "Quick disbursal", detail: "Fast approval and fund transfer process." },
     ],
     sayNoToFees: [
       { name: "Application Fees", allowed: false },
@@ -82,10 +81,10 @@ const loanData = {
     title: "Re-finance",
     subtitle: "Switch your existing loan to save on interest and reduce EMIs.",
     features: [
-      "Lower interest rates",
-      "Balance transfer facility",
-      "Top-up loans available",
-      "Fast processing",
+      { title: "Lower interest rates", detail: "Benefit from current market rates to reduce costs." },
+      { title: "Balance transfer facility", detail: "Transfer your existing loan balance to us." },
+      { title: "Top-up loans available", detail: "Get additional funds along with refinancing." },
+      { title: "Fast processing", detail: "Quick approval and seamless transition." },
     ],
     sayNoToFees: [
       { name: "Application Fees", allowed: false },
@@ -107,10 +106,10 @@ const loanData = {
     subtitle:
       "Finance your commercial property purchases with tailored solutions.",
     features: [
-      "Funding for offices, shops, industrial spaces",
-      "Custom repayment schedules",
-      "Higher ticket sizes",
-      "Structured EMI plans",
+      { title: "Funding for offices, shops, industrial spaces", detail: "Secure loans for various commercial properties." },
+      { title: "Custom repayment schedules", detail: "Flexible terms to suit your business cash flow." },
+      { title: "Higher ticket sizes", detail: "Larger loan amounts for bigger investments." },
+      { title: "Structured EMI plans", detail: "Organized repayment to manage finances effectively." },
     ],
 
     sayNoToFees: [
@@ -132,10 +131,10 @@ const loanData = {
     subtitle:
       "Finance your commercial property purchases with tailored solutions.",
     features: [
-      "Funding for offices, shops, industrial spaces",
-      "Custom repayment schedules",
-      "Higher ticket sizes",
-      "Structured EMI plans",
+      { title: "Funding for offices, shops, industrial spaces", detail: "Secure loans for various commercial properties." },
+      { title: "Custom repayment schedules", detail: "Flexible terms to suit your business cash flow." },
+      { title: "Higher ticket sizes", detail: "Larger loan amounts for bigger investments." },
+      { title: "Structured EMI plans", detail: "Organized repayment to manage finances effectively." },
     ],
 
     sayNoToFees: [
@@ -178,7 +177,6 @@ const LoanOptionsTabs = () => {
 
   const [selected, setSelected] = useState("Home Loan");
   const selectedData = loanData[selected];
-  const { ref: rewardRef, count } = useAnimatedCounter(0.3, 5000);
   const navigate = useNavigate();
 
   return (
@@ -301,59 +299,10 @@ const LoanOptionsTabs = () => {
 
           {/* Key Features */}
           <div className=" grid gap-4   sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
-            <div
-              className="rounded-xl border border-green-900 shadow-lg transform hover:scale-105 transition-transform duration-300 w-full h-85  md:w-72 md:h-full "
-              style={{
-                backgroundImage: `url(${keyFeaturesBg})`,
-                backgroundSize: "cover",
-                backgroundPosition: "center",
-                backgroundRepeat: "no-repeat",
-              }}
-            >
-              <h4 className="text-md  text-center md:mt-22 mt-12 font-serif font-semibold  text-black drop-shadow">
-                Key Features
-              </h4>
-              <ul className="space-y-3   w-1/2 md:ml-20 ml-19 p-1.5   text-[#130e0ea8] text-start font-semibold font-serif text-sm ">
-                {selectedData.features.map((feature, index) => (
-                  <li key={index} className="flex items-start  gap-1">
-                    <div><AiOutlineCheckCircle className="text-green-800  mt-1" /></div>
-                    <span className="drop-shadow">{feature}</span>
-                  </li>
-                ))}
-              </ul>
-            </div>
+            <KeyFeaturesCard features={selectedData.features} />
 
             {/* Be Rewarded  */}
-
-            <div
-              ref={rewardRef}
-              className="relative rounded-2xl border border-green-900 overflow-hidden shadow-lg transform hover:scale-105 transition-transform duration-300 text-center h-auto min-h-[400px]"
-            >
-              <video
-                src={piggy}
-                autoPlay
-                loop
-                muted
-                playsInline
-                className="absolute top-0 left-0 w-full h-full object-cover"
-              />
-              <div className="absolute top-0 left-0 w-full h-full bg-black/30" />
-              <div className="relative z-10 p-6 sm:p-8 flex flex-col justify-center items-center h-full">
-                <h4 className="text-2xl mb-2 font-bold md:-mt-70 -mt-50 text-black drop-shadow-lg uppercase tracking-wide">
-                  Be Rewarded
-                </h4>
-                <ul className="text-white  sm:font-semibold font-bold font-sans text-base">
-                  <span className="text-4xl font-[analog] rounded-2xl shadow-sm shadow-blue-50 bg-black px-2 ">
-                    {count.toFixed(2)}%
-                  </span>
-                  <li className="md:text-xl mt-1 text-lg text-black font-mono ">
-                    Additional rate discount in year 30
-                    <br />
-                    No negotiation needed
-                  </li>
-                </ul>
-              </div>
-            </div>
+            <BeRewarded />
 
             {/* Say No To Fees Section  */}
             <div

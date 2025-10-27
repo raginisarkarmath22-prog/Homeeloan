@@ -1,10 +1,6 @@
-- [x] Update overall page background to gradient from blue-100 to green-100
-- [x] Update header styling to match professional look (remove emojis, adjust fonts and colors)
-- [x] Change card styles to rounded-lg, shadow-lg, hover:scale-105, remove custom overlays
-- [x] Adjust badge styling for consistency
-- [x] Update "Apply Now" button to green-700 with hover to green-900, add transitions
-- [x] Add transitions to heart button and other interactive elements
-- [x] Adjust text colors and fonts to match sleek professional theme
-- [x] Ensure responsive design is maintained
-- [x] Test the styling changes (ran npm run dev)
-- [x] Make cards foldable: show limited info initially, expand on click to show all details
+- [ ] Implement sticky ads container in BankLoanPage.jsx using JavaScript scroll event
+  - [ ] Add ref to ads container div
+  - [ ] Add useEffect with scroll event listener to handle sticky positioning
+  - [ ] Calculate positions to make ads sticky until bottom reaches viewport bottom
+  - [ ] Ensure ads don't overlap footer by stopping before footer
+  - [ ] Test the implementation
