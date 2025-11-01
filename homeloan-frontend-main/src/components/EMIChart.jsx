@@ -61,8 +61,8 @@ export default function EMIChart({ principal, interest, emi }) {
       <div className="absolute bottom-[-50px] right-[-50px] w-32 h-32 bg-blue-400/30 rounded-full blur-[60px]"></div>
 
       {/* LEFT: Chart */}
-      <div className="relative w-full lg:w-1/2 h-64 z-10">
-        <ResponsiveContainer width="100%" height="100%">
+      <div className="w-full h-[300px]">
+        <ResponsiveContainer width={300} height={300}>
           <PieChart>
             <Pie
               data={data}

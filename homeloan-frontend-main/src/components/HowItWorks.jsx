@@ -1,6 +1,7 @@
 import React from "react";
 import { motion, useAnimation } from "framer-motion";
 import { useInView } from "react-intersection-observer";
+import { Link } from "react-router-dom";
 import applyOnlineImg from "../assets/HowItWorks/applyOnline.jpeg";
 import preApprovedImg from "../assets/HowItWorks/GetPre-Approved.jpeg";
 import chooseLoanImg from "../assets/HowItWorks/ChooseYourLoan.jpeg";
@@ -168,6 +169,13 @@ const LoanApproved = () => {
             className="w-full h-full rounded-full bg-white"
           />
         </motion.div>
+      </div>
+
+      {/* Apply Now Button */}
+      <div className="flex justify-center mt-12 z-10">
+        <Link to="/apply-now" className="bg-green-700 hover:bg-green-700 text-white font-semibold py-1.5 px-5 rounded-xl shadow-lg transition-all duration-300 hover:shadow-xl hover:-translate-y-1">
+          Apply Now
+        </Link>
       </div>
     </div>
   );

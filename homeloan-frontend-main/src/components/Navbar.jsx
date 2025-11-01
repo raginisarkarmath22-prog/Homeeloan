@@ -144,7 +144,7 @@ function Navbar() {
             </div>
           </li>
           <li className="cursor-pointer"><button onClick={() => navigate("/eligibility-form")} className="text-black hover:text-transparent hover:bg-clip-text hover:bg-gradient-to-r hover:from-blue-800 hover:to-green-800 transition-all duration-300">Approved projects</button></li>
-          <li className="cursor-pointer text-black hover:text-transparent hover:bg-clip-text hover:bg-gradient-to-r hover:from-blue-800 hover:to-green-800 transition-all duration-300">Help Center</li>
+          <li className="cursor-pointer text-black hover:text-transparent hover:bg-clip-text hover:bg-gradient-to-r hover:from-blue-800 hover:to-green-800 transition-all duration-300"><Link to="/help-center">Help Center</Link></li>
           <li className="cursor-pointer text-black hover:text-transparent hover:bg-clip-text hover:bg-gradient-to-r hover:from-blue-800 hover:to-green-800 transition-all duration-300"><Link to="/compare-loans">Compare Loan</Link></li>
         </ul>
 

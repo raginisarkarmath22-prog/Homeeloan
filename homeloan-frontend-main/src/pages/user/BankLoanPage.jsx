@@ -80,7 +80,7 @@ export default function BankLoanPage() {
     <main className="pt-[80px]">
       <div
         ref={containerRef}
-        className="flex flex-col lg:flex-row w-full min-h-[calc(100vh-80px)] items-start"
+        className="flex flex-col lg:flex-row w-full min-h-[calc(100vh-80px)] items-start bg-green-100/70"
       >
         {/* Main content */}
         <div className="p-6 flex-1 h-full">

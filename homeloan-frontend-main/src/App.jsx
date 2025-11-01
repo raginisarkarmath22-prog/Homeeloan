@@ -12,6 +12,9 @@ import ApprovedProjects from './pages/user/ApprovedProjects';
 import HomeLoanEMICalculator from './components/HomeLoanEMICalculator';
 import Accordion from './components/faq';
 import CompareLoan from './pages/user/ComparedLoan';
+import CheckRates from './pages/user/CheckRates';
+import ApplyNow from './pages/user/ApplyNow';
+import HelpCenter from './pages/user/HelpCenter';
 
 // admin
 import AdminDashboard from "./pages/admin/AdminDashboard";
@@ -38,6 +41,9 @@ function AppContent() {
         <Route path="/faqs" element={<Accordion />} />
   <Route path="/about" element={<About />} />
         <Route path="/compare-loans" element={<CompareLoan />} />
+        <Route path="/check-rates" element={<CheckRates />} />
+        <Route path="/apply-now" element={<ApplyNow />} />
+        <Route path="/help-center" element={<HelpCenter />} />
 
       {/* <Route path="/loan/:bankSlug" element={<LoanPage />} /> */}
       <Route path="/loan/:bankSlug/projects/:cityName" element={<ApprovedProjects />} />
@@ -57,10 +63,10 @@ function AppContent() {
 function App() {
   return (
     <Router>
-      
+
       <AppContent />
     </Router>
-   
+
   );
 }
 

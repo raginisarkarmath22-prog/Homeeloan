@@ -26,18 +26,20 @@ const defaultFeatures = [
   },
 ];
 
-export default function KeyFeaturesCard({ features = defaultFeatures }) {
+export default function KeyFeaturesCard({ features = defaultFeatures, onHoverStart, onHoverEnd }) {
   const [hovered, setHovered] = useState(null);
 
   return (
     <div
-      className="w-full sm:w-[18rem] md:w-[17rem] flex flex-col items-center gap-6 p-6 rounded-3xl border border-green-900/20"
+      className="w-full flex flex-col items-center gap-6 p-6 rounded-3xl border border-green-900/20 min-h-[400px]"
       style={{
         backgroundImage: `url(${keyFeaturesBg})`,
         backgroundSize: "cover",
         backgroundPosition: "center",
         backgroundRepeat: "no-repeat",
       }}
+      onMouseEnter={onHoverStart}
+      onMouseLeave={onHoverEnd}
     >
       <h2 className="text-2xl font-semibold text-gray-900 mb-4 tracking-tight drop-shadow-sm">
         Key Features
@@ -51,11 +53,8 @@ export default function KeyFeaturesCard({ features = defaultFeatures }) {
               onMouseEnter={() => setHovered(i)}
               onMouseLeave={() => setHovered(null)}
               className="rounded-xl overflow-hidden cursor-pointer"
-              animate={{
-                minHeight: isActive ? 120 : 80,
-                paddingBottom: isActive ? 20 : 8,
-              }}
-              transition={{ type: "spring", stiffness: 260, damping: 24 }}
+              layout
+              transition={{ duration: 0.3 }}
             >
               {/* White Glassmorphism Card */}
               <motion.div
@@ -67,10 +66,10 @@ export default function KeyFeaturesCard({ features = defaultFeatures }) {
                 animate={{
                   filter: isActive ? "brightness(1.1)" : "brightness(1)",
                 }}
-                transition={{ type: "spring", stiffness: 330, damping: 24 }}
+                transition={{ duration: 0.3 }}
               >
                 <motion.h3
-                  className="font-semibold text-gray-800 px-4 py-2"
+                  className="font-semibold text-gray-800 px-2 py-1"
                   animate={{
                     fontSize: isActive ? "0.875rem" : "1rem",
                   }}

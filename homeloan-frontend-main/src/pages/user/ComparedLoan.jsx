@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Building } from "lucide-react";
+import { useNavigate, Link } from "react-router-dom";
 
 const logoMap = {
   "state bank of india": "sbi.png",
@@ -144,9 +145,9 @@ const CompareLoan = () => {
               </div>
 
               <div className="mt-6 flex flex-col sm:flex-row gap-4">
-                <button className="flex-1 px-5 py-2 rounded-xl font-semibold text-white bg-gradient-to-r from-green-700 to-green-800 shadow-lg hover:shadow-green-300 hover:scale-105 hover:bg-gradient-to-r from-green-800 to-green-900 transition-all">
+                <Link to="/apply-now" className="flex-1 px-5 py-2 rounded-xl font-semibold text-white bg-gradient-to-r from-green-700 to-green-800 shadow-lg hover:shadow-green-300 hover:scale-105 hover:bg-gradient-to-r from-green-800 to-green-900 transition-all text-center">
                   Apply Now
-                </button>
+                </Link>
                 <button onClick={() => navigate("/eligibility-form")} className="flex-1 px-5 py-2 rounded-xl font-semibold text-green-700 border border-green-700 bg-gradient-to-r from-white to-green-50 hover:bg-green-100 hover:text-green-800 hover:scale-105 transition-all">
                   Do I Qualify?
                 </button>
@@ -285,9 +286,9 @@ const CompareLoan = () => {
               {/* Buttons */}
               <div className="mt-4 md:mt-6 flex flex-col gap-2 md:gap-4">
                 <div className="flex flex-col sm:flex-row gap-2 md:gap-4">
-                  <button className="flex-1 px-3 md:px-5 py-2 rounded-xl font-semibold text-white bg-gradient-to-r from-green-700 to-green-800 shadow-lg hover:shadow-green-300 hover:scale-105 hover:bg-gradient-to-r from-green-800 to-green-900 transition-all text-sm md:text-base">
+                  <Link to="/apply-now" className="flex-1 px-3 md:px-5 py-2 rounded-xl font-semibold text-white bg-gradient-to-r from-green-700 to-green-800 shadow-lg hover:shadow-green-300 hover:scale-105 hover:bg-gradient-to-r from-green-800 to-green-900 transition-all text-sm md:text-base text-center">
                     Apply Now
-                  </button>
+                  </Link>
                   <button onClick={() => navigate("/eligibility-form")} className="flex-1 px-3 md:px-5 py-2 rounded-xl font-bold text-green-800 border border-green-900 bg-green-100 hover:bg-gradient-to-r hover:from-green-700 hover:to-green-800 hover:text-white hover:scale-105 transition-all text-sm md:text-base">
                     Do I Qualify?
                   </button>

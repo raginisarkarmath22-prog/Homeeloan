@@ -1,90 +1,113 @@
-// File: src/components/FeesCard.jsx
 import React, { useState } from "react";
 import { motion } from "framer-motion";
-import feesBg from "../assets/keyfeatures.png"; // You can use your background
+import blackBg from "../assets/sayNoToFees.png";
 
 const fees = [
-  { name: "Application Fees", present: false },
-  { name: "Transfer Fees", present: false },
-  { name: "Processing Fees", present: true },
-  { name: "Exit Fees", present: false },
-  { name: "Early Repay Fees", present: false },
-  { name: "Account Fees", present: false },
+  {
+    name: "Application Fees",
+    allowed: false,
+    detail: "No application fees charged for loan processing.",
+  },
+  {
+    name: "Transfer Fees",
+    allowed: false,
+    detail: "Transfer fees are waived for seamless transactions.",
+  },
+  {
+    name: "Processing Fees",
+    allowed: true,
+    detail: "Processing fees may apply in certain circumstances.",
+  },
+  {
+    name: "Exit Fees",
+    allowed: false,
+    detail: "No exit fees for early loan closure.",
+  },
+  {
+    name: "Early Repay Fees",
+    allowed: false,
+    detail: "Early repayment fees are not applicable.",
+  },
+  {
+    name: "Account Fees",
+    allowed: false,
+    detail: "No additional account maintenance fees.",
+  },
 ];
 
-export default function FeesCard() {
+export default function SayNoToFees() {
   const [hovered, setHovered] = useState(null);
 
   return (
     <div
-      className="relative w-full sm:w-[18rem] md:w-[17rem] rounded-3xl shadow-xl p-7 flex flex-col items-center"
+      className="w-full flex flex-col items-center gap-6 p-6 rounded-3xl border border-green-900/20 min-h-[400px]"
       style={{
-        fontFamily: "'Inter', 'Manrope', 'Segoe UI', Arial, sans-serif",
-        backgroundImage: `url(${feesBg})`,
+        backgroundImage: `url(${blackBg})`,
         backgroundSize: "cover",
         backgroundPosition: "center",
         backgroundRepeat: "no-repeat",
-        backdropFilter: "blur(20px)",
-        WebkitBackdropFilter: "blur(20px)",
-        border: "1px solid rgba(200,200,255,0.16)",
-        boxShadow:
-          "0 8px 40px 0 rgba(44, 146, 255, 0.12), 0 2px 8px 0 rgba(20, 40, 80, 0.04)",
       }}
     >
-      {/* Glass overlay for pure glassmorph */}
-      <div
-        className="absolute inset-0 rounded-3xl pointer-events-none"
-        style={{
-          background: "rgba(255,255,255,0.78)",
-          backdropFilter: "blur(20px)",
-          WebkitBackdropFilter: "blur(20px)",
-          zIndex: 1,
-        }}
-      ></div>
-      {/* Actual card content */}
-      <div className="w-full z-10">
-        <h2 className="text-xl md:text-2xl font-semibold text-gray-900 mb-6 tracking-tight drop-shadow-sm"
-            style={{ fontFamily: "'Manrope', 'Inter', 'Segoe UI', Arial, sans-serif" }}>
-          Fee Breakdown
-        </h2>
-        <ul className="flex flex-col gap-2">
-          {fees.map((fee, i) => (
-            <motion.li
-              key={fee.name}
-              layout
-              onMouseEnter={() => setHovered(i)}
+      <h2 className="text-2xl font-semibold text-gray-900 mb-4 tracking-tight drop-shadow-sm">
+        Say No To Fees
+      </h2>
+      <div className="flex flex-col w-full gap-4">
+        {fees.map((fee, index) => {
+          const isActive = hovered === index;
+          return (
+            <motion.div
+              key={index}
+              onMouseEnter={() => setHovered(index)}
               onMouseLeave={() => setHovered(null)}
-              className={`flex items-center gap-3 rounded-xl px-4 py-3 transition duration-200
-                ${fee.present
-                  ? 'bg-green-50 border border-green-200 shadow-md'
-                  : 'bg-white/80 border border-gray-100 opacity-70 line-through select-none'}
-                ${hovered === i && !fee.present ? 'opacity-90' : ''}`}
-              style={{
-                fontFamily: "'Manrope', 'Inter', 'Segoe UI', Arial, sans-serif",
-                minHeight: '48px',
-                cursor: 'pointer',
-                zIndex: 2,
-              }}
-              animate={{
-                scale: hovered === i ? 1.025 : 1,
-                boxShadow: hovered === i && fee.present
-                  ? "0 2px 8px 0 rgba(46, 189, 155, 0.18)"
-                  : "none",
-              }}
-              transition={{ type: "spring", stiffness: 340, damping: 20 }}
+              className="rounded-xl overflow-hidden cursor-pointer"
+              layout
+              transition={{ duration: 0.3 }}
             >
-              <span className={`text-xl font-bold inline-block 
-                ${fee.present ? "text-green-600" : "text-gray-400"}`}>
-                {fee.present ? "✓" : "✗"}
-              </span>
-              <span className={`text-base font-medium 
-                ${fee.present ? "text-gray-900" : "text-gray-500"}`}>
-                {fee.name}
-              </span>
-            </motion.li>
-          ))}
-        </ul>
+              {/* White Glassmorphism Card */}
+              <motion.div
+                className="relative bg-white/40 backdrop-blur-xs rounded-xl flex flex-col transition-all duration-300 shadow-md"
+                style={{
+                  border: "1px solid rgba(255,255,255,0.3)",
+                  transform: isActive ? "scale(1.03)" : "scale(1)",
+                }}
+                animate={{
+                  filter: isActive ? "brightness(1.1)" : "brightness(1)",
+                }}
+                transition={{ duration: 0.3 }}
+              >
+                <motion.h3
+                  className="font-semibold text-gray-800 px-2 py-1 flex items-center gap-2"
+                  animate={{
+                    fontSize: isActive ? "0.875rem" : "1rem",
+                  }}
+                  transition={{ duration: 0.3 }}
+                >
+                  <span
+                    className={`text-sm ${fee.allowed ? "text-green-800" : "text-red-500"}`}
+                  >
+                    {fee.allowed ? "✓✓" : "❌"}
+                  </span>
+                  {fee.name}
+                </motion.h3>
+                <motion.p
+                  className="text-sm text-gray-600 px-4 pb-2"
+                  initial={{ opacity: 0, height: 0 }}
+                  animate={{
+                    opacity: isActive ? 1 : 0,
+                    height: isActive ? "auto" : 0,
+                  }}
+                  transition={{ duration: 0.33 }}
+                >
+                  {fee.detail}
+                </motion.p>
+              </motion.div>
+            </motion.div>
+          );
+        })}
       </div>
+      <p className="text-xs text-gray-800 mt-4 italic">
+        In certain circumstances LMI premium may apply.
+      </p>
     </div>
   );
 }

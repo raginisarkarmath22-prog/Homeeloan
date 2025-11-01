@@ -152,7 +152,7 @@ export default function Accordion() {
   );
 
   return (
-    <section className="relative max-w-7xl mx-auto px-6 py-16 bg-gradient-to-br from-green-950 via-green-800 to-green-950 overflow-hidden border-2 border-green-700/60 rounded-lg">
+    <section className="relative max-w-full mx-auto px-6 pt-32 pb-16 bg-gradient-to-br from-green-950 via-green-800 to-green-950 overflow-hidden border-2 border-green-700/60 rounded-lg">
       {/* subtle background glows */}
       <div className="absolute top-10 left-10 w-64 h-64 bg-teal-400/20 rounded-full blur-3xl animate-pulse" />
       <div className="absolute bottom-10 right-10 w-64 h-64 bg-cyan-400/20 rounded-full blur-3xl animate-pulse" />

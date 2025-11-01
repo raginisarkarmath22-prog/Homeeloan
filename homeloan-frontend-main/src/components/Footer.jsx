@@ -146,7 +146,7 @@ const Footer = React.forwardRef(function Footer({ onOpenContact }, ref) {
         )}
 
         {/* Bottom Section */}
-        <div className="border-t border-white/10 pt-8 mt-8 flex flex-col md:flex-row justify-between items-center text-sm text-gray-500">
+        <div className="border-t border-white/10 pt-8 mt-8 flex flex-col md:flex-row justify-between items-center text-sm text-gray-300">
           <p>
             © {new Date().getFullYear()}{" "}
             <a

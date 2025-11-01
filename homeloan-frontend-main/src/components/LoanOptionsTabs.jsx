@@ -1,12 +1,13 @@
 import React, { useState } from "react";
+import { motion } from "framer-motion";
 import percentIcon from "../assets/percentgeLogo.png";
 import { AiOutlineCheckCircle } from "react-icons/ai";
 import keyFeaturesBg from "../assets/keyfeatures.png";
 // import blackBg from "../assets/black___bg.png";
-import blackBg from "../assets/sayNoToFees.jpg";
 import { useNavigate } from "react-router-dom";
 import KeyFeaturesCard from "./KeyFeaturesStory";
 import BeRewarded from "./BeRewarded";
+import SayNoToFees from "./SayNoToFees";
 
 import percentageVideo from "../assets/percentage_video.mp4";
 const loanData = {
@@ -176,6 +177,7 @@ const LoanOptionsTabs = () => {
   ];
 
   const [selected, setSelected] = useState("Home Loan");
+  const [isKeyFeaturesHovered, setIsKeyFeaturesHovered] = useState(false);
   const selectedData = loanData[selected];
   const navigate = useNavigate();
 
@@ -299,46 +301,17 @@ const LoanOptionsTabs = () => {
 
           {/* Key Features */}
           <div className=" grid gap-4   sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
-            <KeyFeaturesCard features={selectedData.features} />
+            <KeyFeaturesCard
+              features={selectedData.features}
+              onHoverStart={() => setIsKeyFeaturesHovered(true)}
+              onHoverEnd={() => setIsKeyFeaturesHovered(false)}
+            />
 
             {/* Be Rewarded  */}
-            <BeRewarded />
+            <BeRewarded isExpanded={isKeyFeaturesHovered} />
 
-            {/* Say No To Fees Section  */}
-            <div
-              className="rounded-2xl border border-green-900 shadow-lg transform hover:scale-105 transition-transform duration-300 text-center w-full h-120 md:w-[270px] md:h-[465px]"
-              style={{
-                backgroundImage: `url(${blackBg})`,
-                backgroundSize: "cover", // Ensures image covers full div
-                backgroundPosition: "center", // Keeps image centered
-                backgroundRepeat: "no-repeat",
-                // Prevents repetition
-              }}
-            >
-              <div className="flex flex-col items-center justify-center mt-29 gap-3 w-full">
-                {selectedData.sayNoToFees.map((fee, index) => (
-                  <div
-                    key={index}
-                    className={`flex items-center justify-start space-x-3 px-0.5 py-1 rounded-full text-[10px] font-semibold w-[120px] ${fee.allowed
-                        ? "bg-red-500 text-white shadow-md ml-30"
-                        : "bg-black text-white mr-30"
-                      }`}
-                  >
-                    <span
-                      className={`text-sm ${fee.allowed ? "text-green-300" : "text-red-500"
-                        }`}
-                    >
-                      {fee.allowed ? "✓✓" : "❌"}
-                    </span>
-                    <span>{fee.name}</span>
-                  </div>
-                ))}
-              </div>
-
-              <p className="text-xs underline mt-3 ml-25 shadow-2xl font-mono font-extrabold w-30 text-black">
-                In certain circumstances LMI premium may apply.
-              </p>
-            </div>
+            {/* Say No To Fees Section */}
+            <SayNoToFees />
           </div>
         </div>
       )}

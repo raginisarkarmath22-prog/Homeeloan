@@ -1,5 +1,6 @@
 import React from "react";
 import { motion } from "framer-motion";
+import { Link } from "react-router-dom";
 
 // SVG Icons as React Components
 const FastApprovalIcon = () => (
@@ -142,19 +143,52 @@ const WhyChooseUs = () => {
             </div>
             <div className="p-6 bg-white flex flex-col flex-grow">
               <p className="text-gray-700 text-center mb-4 flex-grow">{feature.description}</p>
-              <button
-                className={`w-full ${feature.button} text-white font-medium py-3 px-4 rounded-lg transition-all duration-300 flex items-center justify-center hover:scale-105 shadow-md hover:shadow-lg`}
-              >
-                <span>{feature.buttonText}</span>
-                <svg
-                  className="w-4 h-4 ml-2 transition-transform duration-300 group-hover:translate-x-1"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
+              {feature.buttonText === "Apply Now" ? (
+                <Link
+                  to="/apply-now"
+                  className={`w-full ${feature.button} text-white font-medium py-3 px-4 rounded-lg transition-all duration-300 flex items-center justify-center hover:scale-105 shadow-md hover:shadow-lg`}
                 >
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 5l7 7-7 7"></path>
-                </svg>
-              </button>
+                  <span>{feature.buttonText}</span>
+                  <svg
+                    className="w-4 h-4 ml-2 transition-transform duration-300 group-hover:translate-x-1"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 5l7 7-7 7"></path>
+                  </svg>
+                </Link>
+              ) : feature.buttonText === "Get Help" ? (
+                <Link
+                  to="/help-center"
+                  className={`w-full ${feature.button} text-white font-medium py-3 px-4 rounded-lg transition-all duration-300 flex items-center justify-center hover:scale-105 shadow-md hover:shadow-lg`}
+                >
+                  <span>{feature.buttonText}</span>
+                  <svg
+                    className="w-4 h-4 ml-2 transition-transform duration-300 group-hover:translate-x-1"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 5l7 7-7 7"></path>
+                  </svg>
+                </Link>
+              ) : (
+                <Link
+                  to="/check-rates"
+                  className={`w-full ${feature.button} text-white font-medium py-3 px-4 rounded-lg transition-all duration-300 flex items-center justify-center hover:scale-105 shadow-md hover:shadow-lg`}
+                >
+                  <span>{feature.buttonText}</span>
+                  <svg
+                    className="w-4 h-4 ml-2 transition-transform duration-300 group-hover:translate-x-1"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 5l7 7-7 7"></path>
+                  </svg>
+                </Link>
+              )}
             </div>
           </motion.div>
         ))}

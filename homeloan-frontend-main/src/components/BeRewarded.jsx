@@ -1,14 +1,17 @@
 import React from "react";
+import { motion } from "framer-motion";
 import piggy from "../assets/1.mp4";
 import useAnimatedCounter from "../hooks/beRewardedAnimateCounter";
 
-const BeRewarded = () => {
+const BeRewarded = ({ isExpanded }) => {
   const { ref: rewardRef, count } = useAnimatedCounter(0.3, 5000);
 
   return (
-    <div
+    <motion.div
       ref={rewardRef}
-      className="relative rounded-2xl border border-green-900 overflow-hidden shadow-lg transform hover:scale-105 transition-transform duration-300 text-center h-auto min-h-[400px]"
+      className="relative rounded-2xl border border-green-900 overflow-hidden shadow-lg transform hover:scale-105 transition-transform duration-300 text-center w-full min-h-[400px]"
+      layout
+      transition={{ duration: 0.3 }}
     >
       <video
         src={piggy}
@@ -24,7 +27,7 @@ const BeRewarded = () => {
           Be Rewarded
         </h4>
         <ul className="text-white  sm:font-semibold font-bold font-sans text-base">
-          <span className="text-4xl font-[analog] rounded-2xl shadow-sm shadow-blue-50 bg-black px-2 ">
+          <span className="text-4xl font-[analog] rounded-2xl shadow-sm shadow-blue-50 bg-green-800 px-2 ">
             {count.toFixed(2)}%
           </span>
           <li className="md:text-xl mt-1 text-lg text-black font-mono ">
@@ -34,7 +37,7 @@ const BeRewarded = () => {
           </li>
         </ul>
       </div>
-    </div>
+    </motion.div>
   );
 };
 

@@ -44,13 +44,13 @@ const LoanPage = ({ bankSlug }) => {
 
 
             <p className="
-  mt-4 px-3 py-1 text-[13px] sm:text-m font-bold border border-blue-700/30
-  text-black 
-  bg-white/40 backdrop-blur-md rounded-md shadow-md 
-  transition-all duration-300 
-  group-hover:shadow-[0_0_15px_#2563EB]
-  group-hover:bg-white/50
-">
+                mt-4 px-3 py-1 text-[13px] sm:text-m font-bold border border-blue-700/30
+                text-black 
+                bg-white/70 backdrop-blur-md rounded-md shadow-md 
+                transition-all duration-300 
+                group-hover:shadow-[0_0_15px_#2563EB]
+                group-hover:bg-white/80
+              ">
               {city.name}
             </p>
           </div>
